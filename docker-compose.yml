@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+
+  app:
+    build:
+      context: "./"
+      dockerfile: Dockerfile
+    container_name: 'employee-management-tool'
+
+
+    ports:
+      - '8071:8071'
+    networks:
+      - employee-proxy-net
+networks:
+  employee-proxy-net:
+    external:
+      name: custom_network
