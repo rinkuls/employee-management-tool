@@ -1,5 +1,5 @@
 node {
-    def WORKSPACE = "/var/lib/jenkins/workspace/todo-management-spring-boot"
+    def WORKSPACE = "/var/lib/jenkins/workspace/employee-management-tool"
     def buildNumber = env.BUILD_NUMBER ?: '0'  // Jenkins build number
     def dockerImageTag = "rinkuls/employee-management-tool:${buildNumber}"
     def helmChartName = "employee-management-chart"
