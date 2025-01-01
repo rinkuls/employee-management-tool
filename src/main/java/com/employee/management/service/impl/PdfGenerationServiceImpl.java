@@ -13,9 +13,6 @@ import org.springframework.stereotype.Service;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,14 +32,18 @@ public class PdfGenerationServiceImpl implements PdfGenerationService {
             Employee employee = employeeRepo.findByName(name)
                     .orElseThrow(() -> new EmployeeNotFoundException("Employee with name '" + name + "' not found"));
 
-            byte[] imageBytes = Files.readAllBytes(Paths.get("src/main/resources/EmployeePic.jpg"));
-            Employee employee1 = employeeRepo.findByName(employee.getName()).get();
-            employee1.setProfilePicture(imageBytes);
-            employeeRepo.save(employee1);
+            //byte[] imageBytes = Files.readAllBytes(Paths.get("src/main/resources/EmployeePic.jpg"));
+            // Employee employee1 = employeeRepo.findByName(employee.getName()).get();
+            //   employee1.setProfilePicture(imageBytes);
+            //   employeeRepo.save(employee1);
 
             // Convert the profile picture to Base64
-            String profilePictureBase64 = Base64.getEncoder().encodeToString(employee.getProfilePicture());
-            String profilePictureUrl = "data:image/jpeg;base64," + profilePictureBase64;
+            String profilePictureUrl = null;
+            if (employee.getProfilePicture() != null) {
+                String profilePictureBase64 = Base64.getEncoder().encodeToString(employee.getProfilePicture());
+                profilePictureUrl = "data:image/jpeg;base64," + profilePictureBase64;
+            }
+
             Map<String, Object> data = new HashMap<>();
 
             data.put("employee", employee);
@@ -58,8 +59,6 @@ public class PdfGenerationServiceImpl implements PdfGenerationService {
             return pdfOutputStream;
         } catch (DocumentException e) {
             throw new RuntimeException("Failed to generate PDF: " + e.getMessage(), e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 

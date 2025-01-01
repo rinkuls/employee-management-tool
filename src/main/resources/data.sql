@@ -1,5 +1,5 @@
 -- Insert an employee
-INSERT INTO employee (id, name, age, email, phone_number, address, married, extra_martial_affair, dream_wish, nature_behavior, profile_picture)
+INSERT INTO employee (id, name, emp_id, email, phone_number, address, married, extra_martial_affair, dream_wish, nature_behavior, profile_picture)
 VALUES (NEXTVAL('employee_seq'), 'A Manchanda', 38, 'Ankit.Mda@aabc.com', '1234567890', '29 Starsse, Frankfurt am Main, Germany', true, true, 'Becoming a CEO of Ankit and Sons Computers Ltd Company', 'Friendly Jolly and very Manipulative', null);
 
 -- Insert spouse for the employee

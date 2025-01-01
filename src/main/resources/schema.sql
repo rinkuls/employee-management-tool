@@ -10,7 +10,7 @@ CREATE SEQUENCE IF NOT EXISTS books_seq START WITH 1 INCREMENT BY 1;
 CREATE TABLE IF NOT EXISTS employee (
     id BIGINT PRIMARY KEY,
     name VARCHAR(255),
-    age INT,
+    emp_id BIGINT,
     email VARCHAR(255),
     phone_number VARCHAR(20),
     address VARCHAR(255),

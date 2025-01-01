@@ -56,9 +56,11 @@
     <div class="section">
         <h2>Personal Information</h2>
         <div class="details">
+            <#if photoUrl??>
             <div class="photo">
                 <img src="${photoUrl}" alt="Photo" style="width:100%; height:100%;" />
             </div>
+            </#if>
             <div>
                 <p><strong>Name:</strong> ${employee.name?html}</p>
                 <p><strong>Phone:</strong> ${employee.phoneNumber?html}</p>

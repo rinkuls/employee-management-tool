@@ -23,7 +23,7 @@ public class Employee {
 
     @NotNull(message = "Name is required")
     private String name;
-    private int age;
+    private Long empId;
     private String email;
     private String phoneNumber;
     private String address;

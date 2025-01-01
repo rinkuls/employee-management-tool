@@ -36,7 +36,7 @@ public class EmployeeRecordController {
             }
 
             // Call the EmployeeService to save the record
-            employeeService.saveEmployeeRecord(employee);
+            employeeService.saveOrUpdateEmployee(employee);
 
             return ResponseEntity.status(HttpStatus.OK)
                     .body("Employee saved successfully.");
